@@ -13,11 +13,6 @@ int main() {
     // Main interaction loop
     char command[16];
     while (1) {
-        /*if (loggedInAccountIndex == -1) {
-            printf("Enter command (login/view/edit/delete/transaction/logout/exit): ");
-        } else {
-            printf("Enter command (view/edit/delete/transaction/logout/exit): ");
-        }*/
         printCommands(loggedInAccountIndex != -1);
         scanf("%15s", command);
 
