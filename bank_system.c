@@ -59,6 +59,27 @@ int login(char *name, char *surname, Account **accounts, int count) {
     }
     return -1; // Return -1 if account not found
 }
+void createAccount(Account **accounts, int *count) {
+    if (*count >= MAX_ACCOUNTS) {
+        printf("Maximum number of accounts reached.\n");
+        return;
+    }
+
+    printf("Creating a new account:\n");
+    printf("Enter IBAN: ");
+    scanf("%33s", (*accounts)[*count].iban);
+    printf("Enter name: ");
+    scanf("%99s", (*accounts)[*count].name);
+    printf("Enter surname: ");
+    scanf("%99s", (*accounts)[*count].surname);
+    printf("Enter currency code (3 letters): ");
+    scanf("%3s", (*accounts)[*count].coin);
+    printf("Enter initial amount: ");
+    scanf("%lf", &(*accounts)[*count].amount);
+
+    (*count)++;
+    printf("Account created successfully.\n");
+}
 
 // View account details function
 void viewAccount(Account *account) {
@@ -70,11 +91,9 @@ void viewAccount(Account *account) {
 
 // Edit account details function
 void editAccount(Account *account) {
-    printf("Editing Account: %s\n", account->iban);
-    printf("Enter new name (current: %s): ", account->name);
-    scanf("%99s", account->name);
-    printf("Enter new surname (current: %s): ", account->surname);
-    scanf("%99s", account->surname);
+    printf("Editing Account of %s %s\n", account->name, account->surname);
+    printf("Enter new IBAN (current: %s): ", account->iban);
+    scanf("%99s", account->iban);
     printf("Enter new currency (current: %s): ", account->coin);
     scanf("%3s", account->coin);
     printf("Enter new amount (current: %.2f): ", account->amount);
@@ -141,13 +160,13 @@ void printWelcome() {
 void printCommands(int isLoggedIn) {
 
     if (isLoggedIn) {
-        printf("/=============================================================\\\n");
+        printf("/==============================================================\\\n");
         printf("| Commands: view | edit | delete | transaction | logout | exit |\n");
         printf("\\==============================================================/\n");
     } else {
-        printf("/=========================\\\n");
-        printf("| Commands: login | exit |\n");
-        printf("\\========================/\n");
+        printf("/==================================\\\n");
+        printf("| Commands: login | sign up | exit |\n");
+        printf("\\==================================/\n");
     }
 
     printf("Enter command: ");

@@ -13,6 +13,7 @@ int main() {
     // Main interaction loop
     char command[16];
     while (1) {
+
         printCommands(loggedInAccountIndex != -1);
         scanf("%15s", command);
 
@@ -53,7 +54,10 @@ int main() {
                 performTransaction(accounts, accountCount, accounts[loggedInAccountIndex].iban, destIban, amount);
                 saveAccounts(accounts, accountCount); // Save changes
             }
-        } else if (strcmp(command, "exit") == 0) {
+        } else if (strcmp(command, "signup") == 0){
+            createAccount(&accounts, &accountCount);
+            saveAccounts(accounts, accountCount); // Save new account to CSV
+        }else if (strcmp(command, "exit") == 0) {
             break; // Exit the program
         } else {
             printf("Invalid command or you need to login first.\n");

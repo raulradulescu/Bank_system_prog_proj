@@ -12,13 +12,14 @@ typedef struct {
 } Account;
 
 // Constants
-#define ACCOUNTS_CSV "accounts_compatible.csv"
+#define ACCOUNTS_CSV "C:/Users/acer/CLionProjects/programming_proj/accounts_compatible.csv"
 #define MAX_ACCOUNTS 1000
 
 // Function prototypes
 int loadAccounts(Account **accounts);
 void saveAccounts(Account *accounts, int count);
 int login(char *name, char *surname, Account **accounts, int count);
+void createAccount(Account **accounts, int *count);
 void viewAccount(Account *account);
 void editAccount(Account *account);
 void deleteAccount(Account *accounts, int *count, int index);
