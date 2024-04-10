@@ -12,7 +12,7 @@ typedef struct {
 } Account;
 
 // Constants
-#define ACCOUNTS_CSV "accounts.csv"
+#define ACCOUNTS_CSV "accounts_compatible.csv"
 #define MAX_ACCOUNTS 1000
 
 // Function prototypes
